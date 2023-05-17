@@ -8,6 +8,7 @@ from models import storage
 
 def parse(arg):
     """Parses the arg and returns a list"""
+
     dic = re.search(r"\{(.*?)\}", arg)
     lis = re.search(r"\[(.*?)\]", arg)
 
