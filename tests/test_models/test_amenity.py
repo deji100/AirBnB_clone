@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines unittests for amenity"""
 import os
-import models
+from models.engine.file_storage import FileStorage
 import unittest
 from datetime import datetime
 from time import sleep
@@ -15,7 +15,7 @@ class TestAmenity_instantiation(unittest.TestCase):
         self.assertEqual(Amenity, type(Amenity()))
 
     def test_new_instance_stored_in_objects(self):
-        self.assertIn(Amenity(), models.storage.all().values())
+        self.assertIn(Amenity(), FileStorage().all().values())
 
     def test_id_is_public_str(self):\
         self.assertEqual(str, type(Amenity().id))

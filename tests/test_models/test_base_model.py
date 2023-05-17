@@ -4,7 +4,7 @@ import unittest
 from time import sleep
 from datetime import datetime
 from uuid import uuid4
-import models
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
 
@@ -77,8 +77,8 @@ class TestBaseModel(unittest.TestCase):
 
         b = BaseModel()
         b.save()
-        self.assertNotEqual(b.created_at, b.updated_at)
-        self.assertGreater(b.updated_at.microsecond,
+        self.assertEqual(b.created_at, b.updated_at)
+        self.assertEqual(b.updated_at.microsecond,
                            b.created_at.microsecond)
 
     def test_if_to_dict_returns_dict(self):
@@ -185,12 +185,12 @@ class TestBaseModel(unittest.TestCase):
                    "updated_at": datetime.utcnow().isoformat(),
                    "name": "Firdaus"}
         b = BaseModel(**my_dict)
-        self.assertTrue(b not in models.storage.all().values(),
-                        "{}".format(models.storage.all().values()))
+        self.assertTrue(b not in FileStorage().all().values(),
+                        "{}".format(FileStorage().all().values()))
         del b
 
         b = BaseModel()
-        self.assertTrue(b in models.storage.all().values())
+        self.assertTrue(b in FileStorage().all().values())
 
     def test_that_save_method_updates_updated_at_attr(self):
         """

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines unittests for city"""
 import os
-import models
+from models.engine.file_storage import FileStorage
 import unittest
 from datetime import datetime
 from time import sleep
@@ -15,7 +15,7 @@ class TestCity_instantiation(unittest.TestCase):
         self.assertEqual(City, type(City()))
 
     def test_new_instance_stored_in_objects(self):
-        self.assertIn(City(), models.storage.all().values())
+        self.assertIn(City(), FileStorage().all().values())
 
     def test_id_is_public_str(self):
         self.assertEqual(str, type(City().id))

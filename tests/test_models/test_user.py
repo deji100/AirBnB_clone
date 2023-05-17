@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines unittests for user class"""
 import os
-import models
+from models.engine.file_storage import FileStorage
 import unittest
 from datetime import datetime
 from time import sleep
@@ -15,7 +15,7 @@ class TestUser_instantiation(unittest.TestCase):
         self.assertEqual(User, type(User()))
 
     def test_new_instance_stored_in_objects(self):
-        self.assertIn(User(), models.storage.all().values())
+        self.assertIn(User(), FileStorage().all().values())
 
     def test_id_is_public_str(self):
         self.assertEqual(str, type(User().id))
