@@ -5,7 +5,7 @@ import json
 
 
 class FileStorage:
-    """A class for serializing or storing data and 
+    """A class for serializing or storing data and
     deserializing or retrieving data."""
 
     __file_path = "file.json"
@@ -14,7 +14,7 @@ class FileStorage:
     def all(self):
         """Returns the all objs"""
         return self.__objects
-    
+
     def new(self, obj):
         """
         Sets a new obj in __objects with key <obj class name>.id
@@ -34,7 +34,7 @@ class FileStorage:
 
         if not os.path.isfile(FileStorage.__file_path):
             return
-        
+
         with open(self.__file_path, encoding="utf-8") as f:
             storage = json.load(f)
             for obj in storage.values():
