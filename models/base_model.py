@@ -26,7 +26,7 @@ class BaseModel:
         """Returns the string rep of an instance"""
 
         return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
-    
+
     def save(self):
         """
         Updates self.updated_at with the current datetime
