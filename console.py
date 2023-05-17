@@ -23,7 +23,6 @@ def parse(arg):
         return lis3
     else:
         return [i.strip(",") for i in split(arg)]
-        
 
 
 class HBNBCommand(cmd.Cmd):
@@ -81,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """Creates a new class instance and print its id"""
-        
+
         argl = parse(arg)
         if len(argl) == 0:
             print("** class name missing **")
@@ -143,7 +142,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, arg):
         """Retrieves the number of instances of a given class"""\
-        
+
         argl = parse(arg)
         count = 0
         for obj in storage.all().values():
